@@ -1,28 +1,30 @@
 package CodeForces;
 
-import java.util.Scanner;
-
-public class max_multiple_sum {
+import java.util.*;
+public class max_multiple {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt(); 
-        while (t>0) {
+        int t = sc.nextInt();
+        
+        while (t-- > 0) {
             int n = sc.nextInt();
-            for (int x=2; x<=n; x++) {
-                int k = n;
-                int sum = 0;
-                while (k>=2) {
-                    if (k%x == 0) {
-                        sum=sum+k;
-                        k=k-x; 
-                    }
-                    else {
-                        k--;
-                    }
+            int bestX = 2;
+            long maxSum = computeSum(n, 2);
+            
+            for (int x = 3; x <= n; x++) {
+                long sum = computeSum(n, x);
+                if (sum > maxSum) {
+                    maxSum = sum;
+                    bestX = x;
                 }
-                System.out.println(sum);  
             }
+            System.out.println(bestX);
         }
         sc.close();
+    }
+    
+    private static long computeSum(int n, int x) {
+        long k = n / x;
+        return x * k * (k + 1) / 2;
     }
 }
