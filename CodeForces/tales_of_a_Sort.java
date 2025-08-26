@@ -1,25 +1,25 @@
 package CodeForces;
 import java.util.*;
-public class Tales_of_a_Sort {
+public class tales_of_a_sort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt(); 
-        while(t>0) {
+        int t = sc.nextInt();
+        while (t-- > 0) {
             int n = sc.nextInt();
             int[] arr = new int[n];
-            for (int i=0; i<n; i++) {
+            for (int i = 0; i < n; i++) {
                 arr[i] = sc.nextInt();
             }
-            for (int j=0; j<n-1; j++) {
-                if (arr[j] >= arr[j+1]) {
-                    for (int k=0; k<n; k++) {
-                        arr[k] = Math.max(0, arr[k]-1);
-                    }
+
+            int ans = 0;
+            for (int i = 0; i < n - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    ans = Math.max(ans, arr[i]);
                 }
-                
             }
-            t--;
+
+            System.out.println(ans);
         }
-        sc.close();
-    }    
+    }
 }
+
